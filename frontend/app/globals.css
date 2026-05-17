@@ -1,0 +1,30 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans:  'DM Sans', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-[#faf9f5] text-gray-800; }
+}
+
+@layer utilities {
+  .font-serif  { font-family: var(--font-serif); }
+  .bg-cream    { background-color: #faf9f5; }
+  .bg-off      { background-color: #f7f6f2; }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.animate-fade-up  { animation: fadeUp .45s cubic-bezier(.22,1,.36,1) both; }
+.animate-fade-up2 { animation: fadeUp .45s .08s cubic-bezier(.22,1,.36,1) both; }
+.animate-fade-up3 { animation: fadeUp .45s .16s cubic-bezier(.22,1,.36,1) both; }
+.animate-fade-up4 { animation: fadeUp .45s .24s cubic-bezier(.22,1,.36,1) both; }

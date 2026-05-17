@@ -1,0 +1,115 @@
+// prisma/schema.prisma
+// FacturaMT — Collecte & Analyse manuelle de factures ENEO MT
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ── Utilisateurs admin ──────────────────────────────────
+model AdminUser {
+  id        String    @id @default(uuid())
+  nom       String
+  email     String    @unique
+  password  String
+  role      Role      @default(EXPERT)
+  actif     Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  dossiers  Dossier[]
+
+  @@map("admin_users")
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EXPERT
+}
+
+// ── Clients ─────────────────────────────────────────────
+model Client {
+  id        String    @id @default(uuid())
+  nom       String
+  secteur   String
+  ville     String
+  telephone String    @unique
+  email     String?
+  contact   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  dossiers  Dossier[]
+
+  @@map("clients")
+}
+
+// ── Dossiers ────────────────────────────────────────────
+model Dossier {
+  id        String        @id @default(uuid())
+  clientId  String
+  client    Client        @relation(fields: [clientId], references: [id])
+
+  factures  Facture[]
+
+  statut    StatutDossier @default(RECU)
+  priorite  Priorite      @default(NORMALE)
+
+  // Assignation expert
+  assigneA  String?
+  expert    AdminUser?    @relation(fields: [assigneA], references: [id])
+
+  // Résultats de l'analyse (saisis par l'auditeur)
+  noteAnalyste         String?
+  economiesIdentifiees Float?
+  recommandations      String?
+  rapportUrl           String?
+
+  // Suivi interne
+  notes     String?
+  rappelAt  DateTime?
+  traiteAt  DateTime?
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("dossiers")
+}
+
+enum StatutDossier {
+  RECU
+  EN_COURS
+  TRAITE
+  ANNULE
+}
+
+enum Priorite {
+  URGENTE
+  HAUTE
+  NORMALE
+  BASSE
+}
+
+// ── Factures (fichiers attachés à un dossier) ────────────
+model Facture {
+  id            String   @id @default(uuid())
+  dossierId     String
+  dossier       Dossier  @relation(fields: [dossierId], references: [id], onDelete: Cascade)
+
+  imageUrl      String
+  imagePath     String
+  nomFichier    String
+  tailleFichier Int
+
+  // Période déclarée par le client
+  mois          String?
+
+  createdAt     DateTime @default(now())
+
+  @@map("factures")
+}
