@@ -1,73 +1,68 @@
 'use client';
 // components/forms/StepInfos.jsx
-// ÉTAPE 2 — Coordonnées allégées (après l'upload)
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { clientsAPI, dossiersAPI } from '@/lib/api';
 
 const SECTEURS = [
-  { value:'industrie',    label:'🏭 Industrie'       },
-  { value:'btp',          label:'🏗 BTP'             },
-  { value:'agroalim',     label:'🌾 Agro-industrie'  },
-  { value:'enseignement', label:'🎓 Enseignement'    },
-  { value:'sante',        label:'🏥 Santé'           },
-  { value:'commerce',     label:'🛍 Commerce'        },
-  { value:'telecom',      label:'📡 Télécoms'        },
-  { value:'autre',        label:'💼 Autre'           },
+  { value: 'industrie',    label: 'Industrie manufacturière' },
+  { value: 'btp',          label: 'BTP / Construction'       },
+  { value: 'agroalim',     label: 'Agro-industrie'           },
+  { value: 'enseignement', label: 'Enseignement'             },
+  { value: 'sante',        label: 'Santé / Hôpital'          },
+  { value: 'commerce',     label: 'Commerce / Hôtellerie'    },
+  { value: 'telecom',      label: 'Télécommunications'       },
+  { value: 'immobilier',   label: 'Immobilier / Grand bâtiment'},
+  { value: 'autre',        label: 'Autre'                    },
 ];
 
 const inputStyle = {
-  width:'100%', border:'1.5px solid #e2e0d8', borderRadius:10,
-  padding:'13px 16px', fontSize:15, outline:'none',
-  fontFamily:"'DM Sans',sans-serif", color:'#2d2d2d',
-  boxSizing:'border-box', background:'white',
-  transition:'border-color 0.2s',
+  width: '100%', border: '1.5px solid #e2e8f0', borderRadius: 9,
+  padding: '12px 16px', fontSize: 14, outline: 'none',
+  fontFamily: "'DM Sans', sans-serif", color: '#1e293b',
+  boxSizing: 'border-box', background: 'white',
 };
 
 const labelStyle = {
-  display:'block', fontSize:11, fontWeight:700,
-  letterSpacing:'0.1em', textTransform:'uppercase',
-  color:'#888', marginBottom:7,
+  display: 'block', fontSize: 10, fontWeight: 700,
+  letterSpacing: '0.1em', textTransform: 'uppercase',
+  color: '#64748b', marginBottom: 7,
 };
 
 export default function StepInfos({ uploadData, onSuccess, onBack }) {
-  const [secteur,  setSecteur]  = useState('industrie');
-  const [nom,      setNom]      = useState('');
-  const [tel,      setTel]      = useState('');
-  const [email,    setEmail]    = useState('');
-  const [loading,  setLoading]  = useState(false);
+  const [secteur, setSecteur] = useState('industrie');
+  const [nom,     setNom]     = useState('');
+  const [tel,     setTel]     = useState('');
+  const [email,   setEmail]   = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
     if (!nom.trim() || !tel.trim()) {
-      toast.error('Le nom de l\'entreprise et le téléphone sont requis.');
+      toast.error("Le nom de l'entreprise et le numéro de téléphone sont requis.");
       return;
     }
-
     setLoading(true);
     try {
-      // 1. Créer ou retrouver le client
       const clientRes = await clientsAPI.createOrFind({
-        nom:      nom.trim(),
+        nom:       nom.trim(),
         secteur,
-        ville:    'Cameroun',
-        telephone:tel.trim(),
-        contact:  nom.trim(),
-        email:    email.trim() || undefined,
+        ville:     'Cameroun',
+        telephone: tel.trim(),
+        contact:   nom.trim(),
+        email:     email.trim() || undefined,
       });
       const client = clientRes.data;
 
-      // 2. Envoyer le dossier avec les fichiers
       const formData = new FormData();
       formData.append('clientId', client.id);
       if (uploadData.mois) formData.append('mois', uploadData.mois);
       uploadData.files.forEach(f => formData.append('factures', f));
 
       const dossierRes = await dossiersAPI.create(formData);
-      toast.success('Dossier envoyé avec succès !');
+      toast.success('Dossier transmis avec succès !');
       onSuccess({ dossier: dossierRes.data, client });
-
     } catch (err) {
-      toast.error(err.response?.data?.error || 'Erreur lors de l\'envoi. Réessayez.');
+      toast.error(err.response?.data?.error || "Erreur lors de l'envoi. Réessayez ou contactez-nous au +237 697 252 071.");
     } finally {
       setLoading(false);
     }
@@ -75,113 +70,128 @@ export default function StepInfos({ uploadData, onSuccess, onBack }) {
 
   return (
     <div style={{
-      background:'white', border:'1px solid #e2e0d8',
-      borderRadius:16, padding:'clamp(24px, 4vw, 40px)',
-      boxShadow:'0 4px 24px rgba(0,0,0,0.07)',
+      background: 'white', border: '1px solid #e2e8f0',
+      borderRadius: 14, padding: 'clamp(22px, 4vw, 40px)',
+      boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
     }}>
-      <div style={{ fontSize:10, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:'#e8622a', marginBottom:8 }}>
+      <div style={{
+        fontSize: 10, fontWeight: 700, letterSpacing: '0.15em',
+        textTransform: 'uppercase', color: '#10B981', marginBottom: 6,
+      }}>
         Étape 2 sur 3
       </div>
-      <h2 style={{ fontFamily:"'DM Serif Display',serif", fontSize:'clamp(22px, 3vw, 28px)', color:'#0a0a0a', marginBottom:6 }}>
+
+      <h2 style={{
+        fontFamily: "'DM Serif Display', serif",
+        fontSize: 'clamp(20px, 3vw, 26px)',
+        color: '#0f172a', marginBottom: 8,
+      }}>
         Vos coordonnées
       </h2>
-      <p style={{ fontSize:14, color:'#888', marginBottom:28, lineHeight:1.6 }}>
-        Pour que nos auditeurs puissent vous contacter avec les résultats.
+
+      <p style={{ fontSize: 14, color: '#64748b', marginBottom: 22, lineHeight: 1.7 }}>
+        Un ingénieur du cabinet vous appelera sur ce numéro sous 48 heures ouvrables
+        pour vous présenter les résultats de l'analyse.
       </p>
 
       {/* Récap fichiers */}
       <div style={{
-        background:'#f0fdf4', border:'1px solid #bbf7d0',
-        borderRadius:10, padding:'12px 16px', marginBottom:24,
-        display:'flex', alignItems:'center', gap:10,
+        background: '#f0fdf4', border: '1px solid #bbf7d0',
+        borderRadius: 9, padding: '11px 16px', marginBottom: 24,
+        display: 'flex', alignItems: 'center', gap: 10,
       }}>
-        <span style={{ fontSize:20 }}>✅</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+          stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
         <div>
-          <div style={{ fontSize:13, fontWeight:600, color:'#166534' }}>
-            {uploadData?.files?.length} facture(s) prête(s)
+          <div style={{ fontSize: 13, fontWeight: 600, color: '#166534' }}>
+            {uploadData?.files?.length} facture(s) prête(s) à l'envoi
           </div>
           {uploadData?.mois && (
-            <div style={{ fontSize:12, color:'#16a34a' }}>{uploadData.mois}</div>
+            <div style={{ fontSize: 11, color: '#16a34a' }}>{uploadData.mois}</div>
           )}
         </div>
       </div>
 
       {/* Secteur */}
-      <div style={{ marginBottom:20 }}>
+      <div style={{ marginBottom: 18 }}>
         <label style={labelStyle}>Secteur d'activité</label>
-        <div style={{ display:'flex', flexWrap:'wrap', gap:8 }}>
+        <select
+          value={secteur}
+          onChange={e => setSecteur(e.target.value)}
+          style={{
+            ...inputStyle, cursor: 'pointer',
+            appearance: 'none',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 14px center',
+            paddingRight: 38,
+          }}
+        >
           {SECTEURS.map(s => (
-            <button
-              key={s.value}
-              type="button"
-              onClick={() => setSecteur(s.value)}
-              style={{
-                padding:'8px 16px', borderRadius:100,
-                border: `1.5px solid ${secteur === s.value ? '#e8622a' : '#e2e0d8'}`,
-                background: secteur === s.value ? '#e8622a' : 'white',
-                color:       secteur === s.value ? 'white'   : '#555',
-                fontSize:13, fontWeight:500, cursor:'pointer',
-                transition:'all 0.15s',
-                fontFamily:"'DM Sans',sans-serif",
-              }}
-            >
-              {s.label}
-            </button>
+            <option key={s.value} value={s.value}>{s.label}</option>
           ))}
-        </div>
+        </select>
       </div>
 
       {/* Champs */}
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:16, marginBottom:24 }}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: 14, marginBottom: 14,
+      }}>
         <div>
-          <label style={labelStyle}>Nom de l'entreprise *</label>
+          <label style={labelStyle}>Nom de votre entreprise ou organisation *</label>
           <input
             style={inputStyle} type="text"
-            placeholder="Ex : HACC Unité Plastique"
+            placeholder="Ex : HACC Unité Plastique, Hôtel Hilton Douala…"
             value={nom} onChange={e => setNom(e.target.value)}
           />
         </div>
         <div>
-          <label style={labelStyle}>Téléphone *</label>
+          <label style={labelStyle}>Numéro de téléphone *</label>
           <input
             style={inputStyle} type="tel"
-            placeholder="Ex : 699 XX XX XX"
+            placeholder="Nous vous appellerons sur ce numéro"
             value={tel} onChange={e => setTel(e.target.value)}
           />
         </div>
       </div>
 
-      <div style={{ marginBottom:28 }}>
-        <label style={labelStyle}>Email (pour recevoir le rapport)</label>
+      <div style={{ marginBottom: 24 }}>
+        <label style={labelStyle}>Email professionnel (pour recevoir le rapport)</label>
         <input
           style={inputStyle} type="email"
-          placeholder="contact@entreprise.cm"
+          placeholder="direction@entreprise.cm"
           value={email} onChange={e => setEmail(e.target.value)}
         />
       </div>
 
-      {/* Confidentialité */}
+      {/* Engagement confidentialité */}
       <div style={{
-        background:'#faf9f5', border:'1px solid #e2e0d8',
-        borderRadius:10, padding:'12px 16px', marginBottom:24,
-        fontSize:12, color:'#888', lineHeight:1.6,
+        background: '#f8fafc', border: '1px solid #e2e8f0',
+        borderLeft: '3px solid #10B981',
+        borderRadius: 9, padding: '12px 16px', marginBottom: 24,
+        fontSize: 12, color: '#475569', lineHeight: 1.7,
       }}>
-        🔒 <strong style={{ color:'#555' }}>Vos données sont confidentielles.</strong>{' '}
-        Votre facture est utilisée uniquement pour l'analyse énergétique.
-        Elle n'est jamais transmise à des tiers.
+        En transmettant ce dossier, vous acceptez que les membres du Cabinet Global Enerdy
+        accèdent à votre facture dans le seul but d'en réaliser l'analyse énergétique.
+        Vos données ne seront jamais revendues ni partagées.
+        Suppression garantie sous 48h après livraison du rapport.
       </div>
 
       {/* Boutons */}
-      <div style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
         <button
           onClick={onBack}
           disabled={loading}
           style={{
-            background:'white', color:'#555', border:'1.5px solid #e2e0d8',
-            borderRadius:10, padding:'13px 22px',
-            fontSize:14, fontWeight:500, cursor:'pointer',
-            fontFamily:"'DM Sans',sans-serif",
-            whiteSpace:'nowrap', flexShrink:0,
+            background: 'white', color: '#64748b',
+            border: '1.5px solid #e2e8f0', borderRadius: 9,
+            padding: '12px 20px', fontSize: 13, fontWeight: 500,
+            cursor: 'pointer', fontFamily: "'DM Sans', sans-serif",
+            whiteSpace: 'nowrap',
           }}
         >
           ← Retour
@@ -190,17 +200,16 @@ export default function StepInfos({ uploadData, onSuccess, onBack }) {
           onClick={handleSubmit}
           disabled={loading || !nom.trim() || !tel.trim()}
           style={{
-            flex:1, minWidth:180,
-            background: (!nom.trim() || !tel.trim()) ? '#e2e0d8' : '#e8622a',
-            color:       (!nom.trim() || !tel.trim()) ? '#aaa'    : 'white',
-            border:'none', borderRadius:10, padding:'13px 22px',
-            fontSize:14, fontWeight:600,
+            flex: 1, minWidth: 180,
+            background: (!nom.trim() || !tel.trim()) ? '#e2e8f0' : '#10B981',
+            color:       (!nom.trim() || !tel.trim()) ? '#94a3b8' : 'white',
+            border: 'none', borderRadius: 9, padding: '12px 20px',
+            fontSize: 14, fontWeight: 700,
             cursor: (!nom.trim() || !tel.trim()) ? 'not-allowed' : 'pointer',
-            fontFamily:"'DM Sans',sans-serif",
-            transition:'background 0.2s',
+            fontFamily: "'DM Sans', sans-serif",
           }}
         >
-          {loading ? 'Envoi en cours…' : 'Envoyer mon dossier →'}
+          {loading ? 'Envoi en cours…' : 'Transmettre mon dossier au cabinet →'}
         </button>
       </div>
     </div>
