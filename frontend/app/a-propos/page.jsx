@@ -2,10 +2,7 @@
 'use client';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'À propos — Cabinet Global Enerdy SARL · Douala',
-  description: 'Cabinet d\'ingénierie énergétique basé à Douala depuis 2022. Audit et optimisation des factures ENEO Moyenne Tension pour les industries et grands comptes au Cameroun.',
-};
+
 
 const WA_URL = `https://wa.me/237697252071?text=${encodeURIComponent("Bonjour Cabinet Global Enerdy, je souhaite en savoir plus sur vos services.")}`;
 
