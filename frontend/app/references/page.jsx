@@ -2,10 +2,7 @@
 'use client';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Références — Cabinet Global Enerdy SARL · Douala',
-  description: 'Les missions d\'audit énergétique réalisées par le Cabinet Global Enerdy pour des industries et établissements de Douala. Économies chiffrées en FCFA.',
-};
+
 
 const WA_URL = `https://wa.me/237697252071?text=${encodeURIComponent("Bonjour Cabinet Global Enerdy, je souhaite en savoir plus sur vos références et démarrer un audit de ma facture ENEO MT.")}`;
 
