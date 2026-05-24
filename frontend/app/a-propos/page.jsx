@@ -1,214 +1,166 @@
-// app/a-propos/page.jsx
 'use client';
-import Link from 'next/link';
-
-
+// app/a-propos/page.jsx
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Link   from 'next/link';
 
 const WA_URL = `https://wa.me/237697252071?text=${encodeURIComponent("Bonjour Cabinet Global Enerdy, je souhaite en savoir plus sur vos services.")}`;
 
-const NAV = [
-  { href:'/',            label:'Accueil'    },
-  { href:'/a-propos',   label:'À propos'   },
-  { href:'/references', label:'Références' },
-  { href:'/contact',    label:'Contact'    },
-];
-
-function Navbar() {
-  return (
-    <nav style={{
-      background:'#0f172a', borderBottom:'1px solid rgba(255,255,255,0.07)',
-      padding:'0 24px', height:64,
-      display:'flex', alignItems:'center', justifyContent:'space-between',
-      position:'sticky', top:0, zIndex:100,
-    }}>
-      <Link href="/" style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none' }}>
-        <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
-          <rect width="36" height="36" rx="8" fill="#10B981"/>
-          <polyline points="6,27 12,14 18,21 23,13 30,27" fill="none" stroke="white" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round"/>
-          <circle cx="23" cy="11" r="2.5" fill="#F59E0B"/>
-        </svg>
-        <div>
-          <div style={{ fontSize:14, fontWeight:700, color:'white' }}>Cabinet Global Enerdy</div>
-          <div style={{ fontSize:9, color:'#10B981', letterSpacing:'0.15em', textTransform:'uppercase' }}>SARL · Douala</div>
-        </div>
-      </Link>
-      <div style={{ display:'flex', gap:20, alignItems:'center' }}>
-        {NAV.map(({ href, label }) => (
-          <Link key={href} href={href} style={{ fontSize:13, fontWeight:500, color:'rgba(255,255,255,0.65)', textDecoration:'none' }}>
-            {label}
-          </Link>
-        ))}
-      </div>
-    </nav>
-  );
-}
-
 export default function APropos() {
   return (
-    <div style={{ background:'#f8fafc', minHeight:'100vh', fontFamily:"'DM Sans',sans-serif" }}>
-      <Navbar />
+    <div className="min-h-screen bg-white font-sans">
+      <Navbar onAudit={() => {}} />
 
       {/* Hero */}
-      <div style={{
-        background:'linear-gradient(135deg,#0f172a,#1e293b)',
-        padding:'64px 24px', textAlign:'center',
-      }}>
-        <div style={{ fontSize:10, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:'#10B981', marginBottom:12 }}>
+      <section className="bg-slate-900 pt-32 pb-20 px-6 text-center">
+        <span className="inline-block bg-blue-600 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
           Qui sommes-nous
-        </div>
-        <h1 style={{ fontFamily:"'DM Serif Display',serif", fontSize:'clamp(28px,5vw,48px)', color:'white', marginBottom:16, lineHeight:1.2 }}>
-          Des ingénieurs camerounais.<br/>Pas un chatbot.
+        </span>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6 max-w-3xl mx-auto">
+          Des ingénieurs camerounais.<br/>
+          <span className="text-blue-400">Pas un chatbot.</span>
         </h1>
-        <p style={{ fontSize:16, color:'rgba(255,255,255,0.55)', maxWidth:560, margin:'0 auto', lineHeight:1.8 }}>
+        <p className="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
           Cabinet d'ingénierie énergétique basé à Douala depuis 2022,
           spécialisé dans l'audit des factures ENEO Moyenne Tension.
         </p>
-      </div>
+      </section>
 
-      <div style={{ maxWidth:960, margin:'0 auto', padding:'56px 24px 80px' }}>
-
-        {/* Chiffres clés */}
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(160px,1fr))', gap:16, marginBottom:56 }}>
+      {/* Chiffres clés */}
+      <section className="bg-white py-16 px-6 border-b border-slate-100">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { val:'2022', lbl:'Année de création'           },
-            { val:'3',    lbl:'Clients accompagnés'         },
-            { val:'48h',  lbl:'Délai de remise du rapport'  },
+            { val:'2022', lbl:'Année de création'              },
+            { val:'3',    lbl:'Clients accompagnés'            },
+            { val:'48h',  lbl:'Délai de remise du rapport'     },
             { val:'100%', lbl:'Audit gratuit & sans engagement' },
           ].map(({ val, lbl }) => (
-            <div key={val} style={{
-              background:'white', border:'1px solid #e2e8f0',
-              borderRadius:12, padding:'24px 20px', textAlign:'center',
-              borderTop:'3px solid #10B981',
-              boxShadow:'0 2px 12px rgba(0,0,0,0.04)',
-            }}>
-              <div style={{ fontFamily:"'DM Serif Display',serif", fontSize:36, color:'#0f172a', lineHeight:1 }}>{val}</div>
-              <div style={{ fontSize:12, color:'#64748b', marginTop:8, lineHeight:1.5 }}>{lbl}</div>
+            <div key={val} className="text-center p-6 rounded-2xl bg-slate-50 border border-slate-100">
+              <div className="text-3xl font-extrabold text-slate-900 mb-2">{val}</div>
+              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider leading-snug">{lbl}</div>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Notre histoire */}
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:40, marginBottom:56, alignItems:'center' }}>
+      {/* Notre histoire */}
+      <section className="py-24 px-6 bg-slate-50">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <div style={{ fontSize:10, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:'#10B981', marginBottom:12 }}>
+            <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">
               Notre histoire
-            </div>
-            <h2 style={{ fontFamily:"'DM Serif Display',serif", fontSize:'clamp(22px,3vw,32px)', color:'#0f172a', marginBottom:20, lineHeight:1.2 }}>
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-8">
               Pourquoi nous avons créé FacturaMT
             </h2>
-            <p style={{ fontSize:14, color:'#475569', lineHeight:1.85, marginBottom:16 }}>
-              Créé en 2022, le Cabinet Global Enerdy est né d'un constat simple :
-              la quasi-totalité des entreprises camerounaises raccordées en Moyenne Tension
-              paient des pénalités évitables chaque mois — pénalités sur l'énergie réactive,
-              puissance souscrite surdimensionnée, dépassements non détectés.
-            </p>
-            <p style={{ fontSize:14, color:'#475569', lineHeight:1.85, marginBottom:16 }}>
-              Personne ne leur expliquait leur facture. Personne ne leur montrait les chiffres.
-              Nous avons décidé de changer ça en mettant notre expertise technique
-              au service des industries, hôtels et grands bâtiments de Douala et Yaoundé.
-            </p>
-            <p style={{ fontSize:14, color:'#475569', lineHeight:1.85 }}>
-              FacturaMT est notre outil numérique pour démocratiser l'accès à l'audit
-              énergétique. Il ne remplace pas un audit physique complet — il permet
-              à tout directeur financier camerounais d'obtenir gratuitement et en 48 heures
-              une première lecture de sa facture par un vrai professionnel.
-            </p>
-          </div>
-
-          {/* Photo équipe */}
-          <div style={{ borderRadius:16, overflow:'hidden', boxShadow:'0 8px 32px rgba(0,0,0,0.12)', border:'4px solid white' }}>
-            <img
-              src="/images/team.jpg"
-              alt="Équipe Cabinet Global Enerdy"
-              style={{ width:'100%', height:320, objectFit:'cover', display:'block' }}
-              onError={e => { e.target.style.display='none'; }}
-            />
-            <div style={{
-              background:'#ecfdf5', padding:'32px 24px', textAlign:'center',
-              display:'flex', flexDirection:'column', alignItems:'center', gap:8,
-            }}>
-              <div style={{ fontSize:13, fontWeight:700, color:'#065f46' }}>
-                L'équipe Cabinet Global Enerdy
-              </div>
-              <div style={{ fontSize:12, color:'#047857' }}>Douala, Cameroun · Depuis 2022</div>
+            <div className="space-y-5 text-slate-600 leading-relaxed text-[15px]">
+              <p>
+                Créé en 2022, le Cabinet Global Enerdy est né d'un constat simple :
+                la quasi-totalité des entreprises camerounaises raccordées en Moyenne Tension
+                paient des pénalités évitables chaque mois — pénalités sur l'énergie réactive,
+                puissance souscrite surdimensionnée, dépassements non détectés.
+              </p>
+              <p>
+                Personne ne leur expliquait leur facture. Personne ne leur montrait les chiffres.
+                Nous avons décidé de changer ça en mettant notre expertise technique au service
+                des industries, hôtels et grands bâtiments de Douala et Yaoundé.
+              </p>
+              <blockquote className="border-l-4 border-blue-600 pl-6 py-2 italic text-slate-800 font-medium">
+                FacturaMT permet à tout directeur financier camerounais d'obtenir gratuitement
+                et en 48 heures une première lecture de sa facture par un vrai professionnel.
+              </blockquote>
             </div>
+          </div>
+          <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+            <img
+              src="/images/engineer.webp"
+              alt="Ingénieur Cabinet Global Enerdy"
+              className="w-full h-[420px] object-cover"
+            />
           </div>
         </div>
+      </section>
 
-        {/* L'équipe */}
-        <div style={{ marginBottom:56 }}>
-          <div style={{ textAlign:'center', marginBottom:40 }}>
-            <div style={{ fontSize:10, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', color:'#10B981', marginBottom:10 }}>
+      {/* L'équipe */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">
               L'équipe
-            </div>
-            <h2 style={{ fontFamily:"'DM Serif Display',serif", fontSize:'clamp(22px,3vw,32px)', color:'#0f172a' }}>
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
               Les ingénieurs qui analysent vos dossiers
             </h2>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))', gap:20 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { nom:'Noah Kevyn Sorel',     titre:"Ingénieur en maîtrise de l'énergie",   role:'Co-fondateur & Directeur technique'          },
-              { nom:'Assoua Effon Cédric',  titre:'Ingénieur électricien',                role:'Expert en facturation MT & audit terrain'    },
+              {
+                nom:   'Noah Kevyn Sorel',
+                titre: "Ingénieur en maîtrise de l'énergie",
+                role:  'Co-fondateur & Directeur technique',
+                init:  'NK',
+              },
+              {
+                nom:   'Assoua Effon Cédric',
+                titre: 'Ingénieur électricien',
+                role:  'Expert en facturation MT & audit terrain',
+                init:  'AE',
+              },
             ].map((m, i) => (
-              <div key={i} style={{
-                background:'white', border:'1px solid #e2e8f0',
-                borderRadius:14, padding:28,
-                boxShadow:'0 2px 12px rgba(0,0,0,0.04)',
-              }}>
-                <div style={{
-                  width:52, height:52, borderRadius:'50%',
-                  background:'#ecfdf5', border:'2px solid #10B981',
-                  display:'flex', alignItems:'center', justifyContent:'center',
-                  fontSize:18, fontWeight:700, color:'#065f46', marginBottom:14,
-                }}>
-                  {m.nom.split(' ').map(n=>n[0]).slice(0,2).join('')}
+              <div key={i} className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-shadow">
+                <div className="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg mb-5">
+                  {m.init}
                 </div>
-                <div style={{ fontSize:16, fontWeight:700, color:'#0f172a', fontFamily:"'DM Serif Display',serif", marginBottom:4 }}>{m.nom}</div>
-                <div style={{ fontSize:12, color:'#10B981', fontWeight:600, marginBottom:4 }}>{m.titre}</div>
-                <div style={{ fontSize:12, color:'#64748b' }}>{m.role}</div>
+                <div className="text-xl font-extrabold text-slate-900 mb-1">{m.nom}</div>
+                <div className="text-sm font-semibold text-blue-600 mb-1">{m.titre}</div>
+                <div className="text-sm text-slate-500">{m.role}</div>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Notre démarche */}
-        <div style={{ background:'#0f172a', borderRadius:16, padding:'clamp(32px,4vw,48px)', marginBottom:40 }}>
-          <h2 style={{ fontFamily:"'DM Serif Display',serif", fontSize:'clamp(20px,3vw,28px)', color:'white', marginBottom:28, textAlign:'center' }}>
+      {/* Notre démarche */}
+      <section className="bg-slate-900 py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-14">
             Notre démarche en 3 étapes
           </h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:24 }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { num:'01', titre:'Analyse digitale',       desc:'Diagnostic de votre facture par nos ingénieurs via la plateforme FacturaMT.'              },
-              { num:'02', titre:'Contre-expertise',       desc:'Validation manuelle des anomalies et chiffrage précis des économies réalisables en FCFA.' },
-              { num:'03', titre:'Accompagnement ENEO',    desc:'Assistance dans vos démarches de modification de contrat ou de contestation de facture.'  },
+              { num:'01', titre:'Analyse digitale',    desc:"Diagnostic de votre facture par nos ingénieurs via la plateforme FacturaMT."              },
+              { num:'02', titre:'Contre-expertise',    desc:"Validation manuelle des anomalies et chiffrage précis des économies réalisables en FCFA." },
+              { num:'03', titre:'Accompagnement ENEO', desc:"Assistance dans vos démarches de modification de contrat ou de contestation de facture."  },
             ].map(item => (
-              <div key={item.num} style={{ borderLeft:'3px solid #10B981', paddingLeft:20 }}>
-                <div style={{ fontSize:11, fontWeight:800, color:'#10B981', letterSpacing:'0.12em', marginBottom:8 }}>{item.num}</div>
-                <div style={{ fontSize:15, fontWeight:700, color:'white', marginBottom:8 }}>{item.titre}</div>
-                <div style={{ fontSize:13, color:'rgba(255,255,255,0.5)', lineHeight:1.7 }}>{item.desc}</div>
+              <div key={item.num} className="p-8 rounded-3xl bg-white/5 border border-white/10">
+                <div className="text-blue-400 font-black text-sm tracking-widest mb-4">{item.num}</div>
+                <h3 className="text-xl font-bold text-white mb-3">{item.titre}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* CTA */}
-        <div style={{ textAlign:'center' }}>
-          <Link href="/" style={{
-            display:'inline-block', background:'#10B981', color:'white',
-            textDecoration:'none', borderRadius:9, padding:'14px 32px',
-            fontSize:14, fontWeight:700, fontFamily:"'DM Sans',sans-serif", marginRight:12,
-          }}>
+      {/* CTA */}
+      <section className="bg-white py-20 px-6 text-center">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">
+          Prêt à analyser votre facture ?
+        </h2>
+        <p className="text-slate-500 mb-8">Gratuit · Confidentiel · Réponse sous 48h</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/"
+            className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all text-sm">
             Déposer ma facture →
           </Link>
-          <a href={WA_URL} target="_blank" rel="noopener noreferrer" style={{
-            display:'inline-block', background:'white', color:'#0f172a',
-            border:'1.5px solid #e2e8f0', textDecoration:'none', borderRadius:9,
-            padding:'13px 24px', fontSize:14, fontWeight:600, fontFamily:"'DM Sans',sans-serif",
-          }}>
-            Nous contacter
+          <a href={WA_URL} target="_blank" rel="noopener noreferrer"
+            className="bg-slate-100 text-slate-800 px-8 py-4 rounded-full font-bold hover:bg-slate-200 transition-all text-sm">
+            Nous contacter sur WhatsApp
           </a>
         </div>
-      </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
