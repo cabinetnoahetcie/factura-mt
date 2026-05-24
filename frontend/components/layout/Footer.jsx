@@ -44,6 +44,10 @@ export default function Footer() {
             <a href="mailto:globalenergysarl@gmail.com" className="block hover:text-white transition-colors">
               globalenergysarl@gmail.com
             </a>
+            
+            <Link href="/a-propos"   style={{ color:'#94a3b8', textDecoration:'none', display:'block' }}>À propos</Link>
+            <Link href="/references" style={{ color:'#94a3b8', textDecoration:'none', display:'block' }}>Références</Link>
+            <Link href="/contact"    style={{ color:'#94a3b8', textDecoration:'none', display:'block' }}>Contact</Link>
             <Link href="/mentions-legales" className="block text-xs hover:text-white transition-colors underline underline-offset-4">
               Mentions légales & Confidentialité
             </Link>
