@@ -2,10 +2,7 @@
 'use client';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Contact — Cabinet Global Enerdy SARL · Douala Akwa',
-  description: 'Contactez le Cabinet Global Enerdy pour un audit gratuit de votre facture ENEO MT. Douala Akwa, Immeuble PMUC. WhatsApp : +237 697 252 071.',
-};
+
 
 const WA_URL = `https://wa.me/237697252071?text=${encodeURIComponent("Bonjour Cabinet Global Enerdy, je souhaite démarrer un audit de ma facture ENEO MT.")}`;
 
