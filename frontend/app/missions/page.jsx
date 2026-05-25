@@ -9,7 +9,6 @@ export default function Missions() {
     <div className="min-h-screen bg-white font-sans selection:bg-blue-100">
       <Navbar onAudit={() => {}} />
 
-      {/* Hero */}
       <section className="bg-slate-900 pt-36 pb-24 px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4">Missions</p>
@@ -17,52 +16,49 @@ export default function Missions() {
             Déroulement d'une mission
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-            De la prise de contact à la remise du rapport, voici comment
-            le Cabinet Global Enerdy accompagne ses clients pas à pas.
+            Notre processus est conçu pour vous offrir une optimisation énergétique sans contrainte —
+            simple, précis, et axé sur vos résultats financiers.
           </p>
         </div>
       </section>
 
-      {/* Étapes */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-0">
             {[
               {
                 num: '01',
-                titre: 'Prise de contact et dépôt de la facture',
-                desc: 'Vous déposez votre facture ENEO MT sur notre plateforme FacturaMT, ou vous nous l\'envoyez directement sur WhatsApp. Pas d\'application à installer, pas de compte à créer. La démarche prend moins de deux minutes.',
-                note: 'Formats acceptés : JPG, PNG. Jusqu\'à 6 factures simultanément.',
+                titre: 'Vous déposez votre facture ENEO',
+                desc: 'Téléchargez simplement votre dernière facture ENEO sur notre plateforme FacturaMT, ou envoyez-la directement via WhatsApp. Pas d\'application à installer, pas de compte à créer. La démarche prend moins de deux minutes.',
+                note: 'C\'est simple, rapide et sans engagement.',
               },
               {
                 num: '02',
-                titre: 'Analyse manuelle par un ingénieur',
-                desc: 'Sous 48 heures ouvrables, un ingénieur du cabinet ouvre votre dossier. Il calcule votre cos φ réel, vérifie l\'adéquation de votre puissance souscrite, et contrôle chaque ligne de votre facture par rapport à la grille tarifaire ARSEL en vigueur.',
-                note: 'Ce n\'est pas un algorithme. C\'est un ingénieur avec vos chiffres et la réglementation ENEO en main.',
+                titre: 'Audit personnalisé par nos ingénieurs',
+                desc: 'Sous 48 heures ouvrables, un ingénieur du cabinet réalise une analyse approfondie de votre facture. Il identifie chaque source de surcoût — abonnement inadapté, pénalités évitables, erreurs de facturation — et quantifie précisément les économies réalisables.',
+                note: 'Loin des solutions automatisées, chaque audit est réalisé par nos ingénieurs qualifiés.',
               },
               {
                 num: '03',
-                titre: 'Chiffrage des anomalies et des économies',
-                desc: 'Chaque anomalie identifiée est quantifiée précisément en FCFA. Vous recevez un rapport clair indiquant le montant exact des surcoûts évitables et les économies mensuelles réalisables si les corrections sont mises en œuvre.',
-                note: 'Pas d\'estimation vague. Des chiffres précis, ligne par ligne.',
+                titre: 'Validation expert et chiffrage en FCFA',
+                desc: 'Chaque anomalie détectée est vérifiée manuellement et les économies potentielles sont chiffrées avec exactitude en FCFA, ligne par ligne. Vous recevez un rapport clair et détaillé, sans jargon technique.',
+                note: 'Une visibilité totale sur les sommes que vous pourriez récupérer.',
               },
               {
                 num: '04',
                 titre: 'Présentation des résultats',
-                desc: 'Nous vous appelons pour vous présenter les résultats. Vous pouvez poser toutes vos questions. Vous décidez librement de la suite à donner — aucun engagement n\'est requis à cette étape.',
-                note: 'Vous n\'êtes jamais engagé à quoi que ce soit.',
+                desc: 'Nous vous contactons pour vous présenter les résultats de l\'audit. Vous pouvez poser toutes vos questions. Vous décidez librement de la suite — aucun engagement n\'est requis à cette étape.',
+                note: 'Vous restez maître de votre décision.',
               },
               {
                 num: '05',
-                titre: 'Accompagnement auprès d\'ENEO (si souhaité)',
-                desc: 'Si vous souhaitez mettre en œuvre les recommandations, notre équipe vous accompagne dans les démarches de modification de contrat, de contestation de facture ou de demande de correction auprès d\'ENEO Cameroun.',
-                note: 'Nous vous assistons jusqu\'à l\'application effective des corrections sur vos factures.',
+                titre: 'Soutien complet auprès d\'ENEO (si souhaité)',
+                desc: 'Si vous décidez de mettre en œuvre nos recommandations, nous vous accompagnons dans toutes les démarches auprès d\'ENEO — modification de contrat, contestation de factures, demandes de correction — jusqu\'à la concrétisation de vos économies.',
+                note: 'Nous gérons les démarches pour que vous vous concentriez sur votre cœur de métier.',
               },
             ].map((step, i) => (
               <div key={i} className="flex gap-8 pb-12 relative">
-                {i < 4 && (
-                  <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-blue-100"/>
-                )}
+                {i < 4 && <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-blue-100"/>}
                 <div className="flex-shrink-0">
                   <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-sm z-10 relative">
                     {i + 1}
@@ -82,10 +78,15 @@ export default function Missions() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-slate-900 py-20 px-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Prêt à démarrer ?</h2>
-        <p className="text-slate-400 mb-8">Gratuit · Sans engagement · Réponse sous 48h</p>
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          Passez à l'action : votre audit gratuit vous attend
+        </h2>
+        <p className="text-slate-400 mb-8 max-w-lg mx-auto">
+          N'attendez plus pour optimiser vos coûts énergétiques. Déposez votre facture ENEO
+          dès aujourd'hui. Notre audit est gratuit, confidentiel et vous recevrez une réponse
+          détaillée sous 48 heures.
+        </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/" className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all text-sm">
             Déposer ma facture →
