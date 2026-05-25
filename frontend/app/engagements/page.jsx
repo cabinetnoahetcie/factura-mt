@@ -9,7 +9,6 @@ export default function Engagements() {
     <div className="min-h-screen bg-white font-sans selection:bg-blue-100">
       <Navbar onAudit={() => {}} />
 
-      {/* Hero */}
       <section className="bg-slate-900 pt-36 pb-24 px-6">
         <div className="max-w-5xl mx-auto">
           <p className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4">Missions</p>
@@ -17,8 +16,8 @@ export default function Engagements() {
             Nos engagements
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-            Ce que le Cabinet Global Enerdy s'engage à faire — et à ne pas faire —
-            pour chaque client qui nous confie son dossier.
+            Chez Global Enerdy, la confiance de nos clients est primordiale. Voici ce que nous
+            nous engageons à faire — et à ne pas faire — pour chaque entreprise qui nous confie son dossier.
           </p>
         </div>
       </section>
@@ -26,22 +25,19 @@ export default function Engagements() {
       {/* Rémunération au résultat */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">
-            Rémunération au résultat
-          </p>
+          <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">Rémunération au résultat</p>
           <h2 className="text-3xl font-extrabold text-slate-900 mb-4 max-w-2xl leading-tight">
             Vous ne payez pas une mission à l'issue incertaine
           </h2>
           <p className="text-slate-500 text-[15px] leading-relaxed mb-12 max-w-2xl">
-            Notre modèle est simple et transparent : nous réalisons un audit gratuit,
-            et nos honoraires ne s'appliquent que sur les économies effectivement réalisées
-            et validées par vous.
+            Notre modèle est simple et transparent : nous réalisons un audit gratuit, et nos honoraires
+            ne s'appliquent que sur les économies effectivement réalisées et validées par vous.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             {[
               {
                 titre: 'Audit gratuit',
-                desc:  'Nous réalisons un audit gratuit et sans engagement de votre facturation ENEO MT. Vous ne payez rien pour cette première analyse.',
+                desc:  'Nous réalisons une analyse gratuite et sans engagement de votre facturation ENEO. Vous ne payez rien pour cette première étape.',
               },
               {
                 titre: 'Si aucun levier trouvé',
@@ -49,7 +45,7 @@ export default function Engagements() {
               },
               {
                 titre: 'Si des économies sont identifiées',
-                desc:  'Nous chiffrons les enjeux financiers précisément. Vous décidez librement. Nos honoraires ne s\'appliquent que sur les économies effectivement réalisées.',
+                desc:  'Nous chiffrons précisément les enjeux financiers en FCFA. Vous décidez librement. Nos honoraires ne s\'appliquent que sur les économies concrètement réalisées.',
               },
             ].map((item, i) => (
               <div key={i} className="border-t-4 border-blue-600 pt-6 bg-slate-50 rounded-b-2xl p-6">
@@ -64,40 +60,43 @@ export default function Engagements() {
       {/* 6 engagements */}
       <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-slate-900 mb-14 text-center">
-            Nos 6 engagements envers vous
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-4 text-center">
+            Nos engagements envers vous
           </h2>
+          <p className="text-slate-500 text-center mb-14 max-w-xl mx-auto">
+            Chez Global Enerdy, la transparence n'est pas un argument marketing — c'est notre mode de fonctionnement.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
                 num: '01',
                 titre: 'Confidentialité absolue',
-                desc:  'Vos données de facturation ne sont jamais partagées ni revendues à des tiers. Seul l\'ingénieur assigné à votre dossier y a accès.',
+                desc:  'Vos données de facturation sont des informations stratégiques. Elles ne sont jamais partagées, vendues ou louées à des tiers. Seul l\'ingénieur assigné à votre dossier y a accès.',
               },
               {
                 num: '02',
                 titre: 'Résultats chiffrés en FCFA',
-                desc:  'Chaque recommandation est accompagnée d\'un chiffrage précis des économies mensuelles et annuelles réalisables. Pas d\'estimation vague.',
+                desc:  'Chaque recommandation est accompagnée d\'un chiffrage précis des économies mensuelles et annuelles réalisables. Pas d\'estimation vague — des chiffres concrets, ligne par ligne.',
               },
               {
                 num: '03',
-                titre: 'Analyse manuelle par un ingénieur',
-                desc:  'Aucun algorithme ne remplace l\'œil d\'un ingénieur sur votre facture. Chaque dossier est traité personnellement par notre équipe.',
+                titre: 'Analyse humaine par un ingénieur',
+                desc:  'Loin des solutions automatisées, chaque audit est réalisé personnellement par nos ingénieurs qualifiés, assurant une précision et une pertinence inégalées.',
               },
               {
                 num: '04',
-                titre: 'Réponse sous 48 heures',
-                desc:  'Nous nous engageons à vous contacter sous 48 heures ouvrables après réception de votre dossier, quelle que soit la taille de votre facture.',
+                titre: 'Réactivité sous 48 heures',
+                desc:  'Nous nous engageons à vous contacter sous 48 heures ouvrables après réception de votre dossier, pour vous garantir une réponse rapide et efficace.',
               },
               {
                 num: '05',
-                titre: 'Suppression des données après livraison',
-                desc:  'Vos factures sont définitivement supprimées de nos serveurs dans les 48 heures suivant la livraison de votre rapport d\'audit.',
+                titre: 'Suppression sécurisée de vos données',
+                desc:  'Vos factures sont définitivement supprimées de nos serveurs dans les 48 heures suivant la livraison de votre rapport. Votre confidentialité est notre priorité.',
               },
               {
                 num: '06',
-                titre: 'Conformité à la réglementation camerounaise',
-                desc:  'Toutes nos analyses sont réalisées conformément aux directives de l\'ARSEL et dans le respect de la loi n°2010/012 relative à la cybersécurité.',
+                titre: 'Conformité réglementaire camerounaise',
+                desc:  'Toutes nos analyses sont réalisées en conformité avec les directives de l\'ARSEL et la loi n°2010/012 relative à la cybersécurité et à la cybercriminalité au Cameroun.',
               },
             ].map(item => (
               <div key={item.num} className="bg-white border border-slate-100 rounded-2xl p-7 hover:shadow-lg transition-shadow">
@@ -110,14 +109,13 @@ export default function Engagements() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-slate-900 py-20 px-6 text-center">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-          Ces engagements vous convainquent ?
+          Prêt à transformer vos dépenses en bénéfices ?
         </h2>
         <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-          Déposez votre facture ENEO MT — un ingénieur l'analyse gratuitement
-          et vous contacte sous 48 heures.
+          Déposez votre facture ENEO dès aujourd'hui. Gratuit, confidentiel,
+          réponse sous 48 heures.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/" className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all text-sm">
