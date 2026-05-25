@@ -4,84 +4,84 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Link   from 'next/link';
 
-const WA_URL = `https://wa.me/237697252071?text=${encodeURIComponent("Bonjour Cabinet Global Enerdy, je souhaite en savoir plus sur votre service d'audit ENEO MT.")}`;
-
 export default function Services() {
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-blue-100">
       <Navbar onAudit={() => {}} />
 
-      {/* Hero */}
       <section className="bg-slate-900 pt-36 pb-24 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4">
-            Frais généraux
-          </p>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6 max-w-3xl">
-            Électricité ENEO<br/>
-            <span className="text-blue-400">Moyenne Tension</span>
+          <p className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4">Frais généraux</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">
+            Optimisation Stratégique de{' '}
+            <span className="text-blue-400">Vos Coûts Énergétiques ENEO</span>
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-            Le Cabinet Global Enerdy accompagne ses clients professionnels dans l'optimisation
-            de cette dépense incontournable. Votre facture ENEO MT contient des anomalies
-            que vous payez chaque mois sans le savoir.
+            Pour les entreprises à forte consommation, la facture ENEO représente une dépense majeure.
+            Chez Global Enerdy, nous transformons cette charge en levier d'économies substantielles.
+            Nous détectons les surcoûts cachés dans vos factures pour garantir une gestion énergétique
+            plus rentable et efficiente.
           </p>
         </div>
       </section>
 
-      {/* Le contexte */}
+      {/* Le Contexte */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">
-              Le contexte
-            </p>
+            <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">Le contexte</p>
             <h2 className="text-3xl font-extrabold text-slate-900 mb-6 leading-tight">
-              Optimiser sa facture ENEO MT
+              Comprendre et maîtriser vos dépenses énergétiques
             </h2>
-            <div className="space-y-4 text-slate-600 text-[15px] leading-relaxed">
+            <div className="space-y-5 text-slate-600 text-[15px] leading-relaxed">
               <p>
-                La grille tarifaire ENEO Moyenne Tension est complexe. Elle intègre une prime fixe
-                sur la puissance souscrite, une facturation de l'énergie active en heures pleines
-                et heures creuses, et des pénalités sur l'énergie réactive lorsque le cos φ
-                est inférieur au seuil réglementaire fixé par l'ARSEL.
+                La complexité des tarifs ENEO peut masquer des inefficacités coûteuses. De l'abonnement
+                à la consommation réelle, en passant par les pénalités pour une énergie mal gérée,
+                chaque ligne de votre facture est une opportunité d'optimisation.
               </p>
-              <p>
-                Votre puissance souscrite est-elle adaptée à votre consommation réelle ?
-                Payez-vous des pénalités de dépassement chaque mois sans le savoir ?
-                Votre facteur de puissance est-il conforme au seuil imposé par l'ARSEL ?
-              </p>
-              <p>
-                Dans la majorité des cas que nous traitons, la réponse à au moins l'une de ces
-                questions génère un surcoût mensuel évitable — entre 150 000 et
-                1 500 000 FCFA selon la taille du site.
+              <p>Nous vous aidons à répondre à des questions cruciales :</p>
+              <ul className="space-y-3">
+                {[
+                  'Votre contrat est-il aligné avec votre consommation réelle ?',
+                  'Payez-vous des frais supplémentaires évitables chaque mois ?',
+                  'Votre installation respecte-t-elle les normes pour éviter les pénalités ?',
+                ].map((q, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="w-5 h-5 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">?</span>
+                    <span>{q}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-8 bg-blue-50 border-l-4 border-blue-600 rounded-r-xl px-6 py-4">
+              <p className="text-slate-800 font-semibold text-[15px] leading-relaxed">
+                Le constat est clair : la plupart des entreprises paient entre{' '}
+                <span className="text-blue-600 font-bold">200 000 et 1 500 000 FCFA de trop</span>{' '}
+                chaque mois. Notre mission est de vous faire récupérer ces sommes.
               </p>
             </div>
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl">
-            <img src="/images/factory.jpg" alt="Site industriel ENEO MT"
-              className="w-full h-[420px] object-cover"/>
+            <img src="/images/factory.jpg" alt="Entreprise camerounaise" className="w-full h-[420px] object-cover"/>
           </div>
         </div>
       </section>
 
-      {/* Nos solutions */}
+      {/* Nos Solutions */}
       <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-5xl mx-auto">
-          <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">
-            Nos solutions
-          </p>
+          <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">Nos solutions</p>
           <h2 className="text-3xl font-extrabold text-slate-900 mb-12">
-            Nous analysons tous les paramètres de votre facture ENEO
+            Notre approche : des solutions concrètes pour des résultats mesurables
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             {[
-              { num:'01', titre:"Analyse de l'historique de facturation",   desc:"Suivi des consommations et données de facturation sur les 12 à 24 derniers mois disponibles." },
-              { num:'02', titre:'Contrôle de l\'adéquation contractuelle',  desc:"Vérification de votre puissance souscrite par rapport à votre puissance atteinte réelle." },
-              { num:'03', titre:'Identification des anomalies tarifaires',  desc:"Détection des pénalités injustifiées : cos φ, dépassements, erreurs de comptage, prime fixe surfacturée." },
-              { num:'04', titre:'Chiffrage précis des économies en FCFA',   desc:"Simulation des pistes d'optimisation et mesure des enjeux financiers précis, ligne par ligne." },
-              { num:'05', titre:"Accompagnement auprès d'ENEO",             desc:"Assistance dans vos démarches de modification de contrat ou de contestation de facture." },
-              { num:'06', titre:'Suivi post-audit',                         desc:"Vérification que les corrections sont bien appliquées sur vos factures suivantes." },
+              { num:'01', titre:'Analyse financière approfondie',  desc:"Nous examinons vos 12 à 24 derniers mois de facturation pour identifier les tendances et les anomalies récurrentes." },
+              { num:'02', titre:'Alignement contractuel',          desc:"Nous vérifions que votre contrat ENEO correspond précisément à vos besoins réels, évitant les surcoûts liés à une puissance souscrite inadaptée." },
+              { num:'03', titre:'Détection des surfacturations',   desc:"Nous identifions toutes les pénalités injustifiées, les erreurs de facturation et les primes fixes excessives." },
+              { num:'04', titre:"Projection d'économies en FCFA",  desc:"Nous chiffrons avec précision les économies potentielles en FCFA, ligne par ligne, pour vous offrir une visibilité totale." },
+              { num:'05', titre:'Gestion des démarches ENEO',      desc:"Nous vous accompagnons activement auprès d'ENEO pour toute modification contractuelle ou contestation de facture." },
+              { num:'06', titre:'Suivi post-optimisation',         desc:"Nous nous assurons que les corrections sont bien appliquées et que vos économies se concrétisent sur le long terme." },
             ].map(item => (
               <div key={item.num} className="bg-white border border-slate-100 rounded-2xl p-7 hover:shadow-lg transition-shadow">
                 <p className="text-blue-500 font-black text-xs tracking-widest mb-3">{item.num}</p>
@@ -94,14 +94,14 @@ export default function Services() {
           {/* 4 anomalies */}
           <div className="bg-slate-900 rounded-3xl p-10">
             <h3 className="text-2xl font-bold text-white mb-8">
-              Les 4 anomalies que nous traitons le plus fréquemment
+              Les principales sources de surcoûts que nous corrigeons
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { titre:'Pénalité énergie réactive',          desc:"Cos φ non corrigé — facturé chaque mois dès que le facteur de puissance passe sous le seuil de 0,85 fixé par l'ARSEL." },
-                { titre:'Puissance souscrite surdimensionnée', desc:"Prime fixe excessive sur une puissance que vos équipements n'atteignent jamais. Renégociable auprès d'ENEO." },
-                { titre:'Dépassement de puissance appelée',   desc:"Tarif pénalisé appliqué dès que la puissance atteinte dépasse la souscrite — souvent non signalé par ENEO." },
-                { titre:'Erreur de lecture de compteur',       desc:"Index incorrectement reporté — vous êtes facturé pour une consommation que vous n'avez pas faite." },
+                { titre:'Frais pour énergie inefficace',    desc:"Des pénalités récurrentes lorsque votre installation ne gère pas l'énergie de manière optimale, entraînant des coûts inutiles chaque mois." },
+                { titre:'Abonnement électrique excessif',   desc:"Vous payez pour une capacité que vous n'utilisez pas — une prime fixe surdimensionnée et renégociable auprès d'ENEO." },
+                { titre:'Pénalités de dépassement',        desc:"Des tarifs majorés appliqués sans avertissement lorsque votre consommation dépasse la puissance souscrite." },
+                { titre:'Erreurs de comptage',             desc:"Des relevés incorrects qui vous facturent une consommation supérieure à votre usage réel — récupérable auprès d'ENEO." },
               ].map((a, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="w-1.5 flex-shrink-0 bg-blue-500 rounded-full mt-1"/>
@@ -116,49 +116,29 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Vérifier */}
+      {/* CTA */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">
-              Nos solutions
-            </p>
+            <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">Votre audit gratuit</p>
             <h2 className="text-3xl font-extrabold text-slate-900 mb-6">
-              Vérifier — gratuitement et sans engagement
+              Identifiez vos économies potentielles
             </h2>
             <p className="text-slate-600 text-[15px] leading-relaxed mb-8">
-              Nous procédons à une étude gratuite et sans engagement de votre facturation ENEO MT.
-              Déposez votre facture — un ingénieur l'analyse manuellement et vous contacte
-              sous 48 heures avec les résultats chiffrés en FCFA.
+              Curieux de savoir combien vous pourriez économiser ? Bénéficiez d'une analyse gratuite
+              et sans engagement de votre facture ENEO. Il vous suffit de la déposer. Un de nos experts
+              vous contactera sous 48 heures avec un rapport détaillé et chiffré en FCFA.
+              C'est une démarche simple, confidentielle et sans risque.
             </p>
-            <Link href="/"
-              className="block bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-600 transition-all text-sm text-center mb-3">
+            <Link href="/" className="block bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-600 transition-all text-sm text-center mb-3">
               Déposer ma facture pour analyse →
             </Link>
-            <a href={WA_URL} target="_blank" rel="noopener noreferrer"
-              className="block bg-slate-100 text-slate-800 px-8 py-4 rounded-full font-bold hover:bg-slate-200 transition-all text-sm text-center mb-4">
-              Nous contacter sur WhatsApp
-            </a>
-            <p className="text-xs text-slate-400 text-center">
-              Gratuit · Confidentiel · Réponse sous 48h · Aucun engagement
-            </p>
+            <p className="text-xs text-slate-400 text-center">Gratuit · Confidentiel · Rapport sous 48h · Aucun engagement</p>
           </div>
           <div className="rounded-3xl overflow-hidden shadow-xl">
-            <img src="/images/meter.jpg" alt="Compteur ENEO MT"
-              className="w-full h-[360px] object-cover"/>
+            <img src="/images/meter.jpg" alt="Compteur ENEO" className="w-full h-[360px] object-cover"/>
           </div>
         </div>
-      </section>
-
-      {/* CTA bas */}
-      <section className="bg-slate-50 py-16 px-6 text-center border-t border-slate-100">
-        <p className="text-slate-600 text-base mb-6">
-          Comment pouvons-nous vous aider à optimiser votre facture ENEO ?
-        </p>
-        <Link href="/contact"
-          className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-bold hover:bg-blue-600 transition-all text-sm">
-          Prendre rendez-vous →
-        </Link>
       </section>
 
       <Footer />
