@@ -39,26 +39,27 @@ export default function HomePage() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"/>
                 </span>
                 <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">
-                  Douala &amp; Yaoundé
+                  Cabinet Global Energy · Douala &amp; Yaoundé
                 </span>
               </div>
 
               <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
-                Optimisez votre trésorerie :{' '}
-                <span className="text-blue-600">des économies cachées dans vos factures ENEO.</span>
+                Vos factures d'électricité Moyenne Tension recèlent des{' '}
+                <span className="text-blue-600">surcoûts que votre entreprise supporte chaque mois.</span>
               </h1>
 
               <p className="text-lg text-slate-600 max-w-xl leading-relaxed mb-10">
-                Saviez-vous que vos factures ENEO pourraient contenir des surcoûts significatifs ?
-                Chez Global Enerdy, nous identifions ces anomalies et vous contactons sous 48 heures
-                avec nos premières conclusions. L'étude est gratuite et sans engagement.
+                Le Cabinet Global Energy conduit des audits experts de vos factures d'électricité
+                Moyenne Tension afin d'identifier les anomalies tarifaires et de vous restituer,
+                sous 48 heures, une évaluation précise des économies réalisables.
+                L'étude est gratuite et sans engagement.
               </p>
 
               <div className="grid grid-cols-3 gap-8 pt-8 border-t border-slate-100">
                 {[
-                  { val:'8 / 10', lbl:'factures contiennent des surcoûts évitables' },
-                  { val:'48h',    lbl:'pour vous présenter nos conclusions'          },
-                  { val:'0 FCFA', lbl:'à payer pour l\'étude initiale'              },
+                  { val:'8 / 10', lbl:'des structures analysées présentent au moins une anomalie tarifaire' },
+                  { val:'48h',    lbl:'délai de restitution de nos premières conclusions'                    },
+                  { val:'0 FCFA', lbl:'aucun frais pour l\'étude initiale'                                  },
                 ].map(({ val, lbl }) => (
                   <div key={val} className="flex flex-col">
                     <span className="text-2xl font-extrabold text-slate-900">{val}</span>
@@ -70,7 +71,7 @@ export default function HomePage() {
 
             <div className="relative hidden lg:block">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-200/50 border-8 border-white">
-                <img src="/images/factory.jpg" alt="Entreprise camerounaise raccordée ENEO"
+                <img src="/images/factory.jpg" alt="Site industriel raccordé en Moyenne Tension"
                   className="w-full h-[500px] object-cover"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent"/>
               </div>
@@ -81,10 +82,11 @@ export default function HomePage() {
                       <polyline points="20 6 9 17 4 12"/>
                     </svg>
                   </div>
-                  <div className="text-xs font-bold text-slate-900">Expertise locale</div>
+                  <div className="text-xs font-bold text-slate-900">Expertise camerounaise</div>
                 </div>
                 <p className="text-[11px] text-slate-500 leading-relaxed">
-                  Nos experts interviennent auprès des industries et grands comptes de Douala et Yaoundé.
+                  Nos experts accompagnent les industries, hôtels et grands établissements
+                  de Douala et Yaoundé.
                 </p>
               </div>
             </div>
@@ -112,37 +114,38 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* PROBLÈME — court, accroche uniquement */}
+      {/* PROBLÈME */}
       {step === 0 && (
         <section className="bg-slate-50 py-24">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">
-                Le Problème
+                Enjeu financier
               </span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-6">
-                Ces coûts inattendus qui pèsent sur votre rentabilité
+                Des charges énergétiques injustifiées qui affectent votre résultat
               </h2>
               <p className="text-slate-600 text-[15px] leading-relaxed mb-6">
-                Chaque mois, votre entreprise pourrait payer des frais inutiles sur ses factures ENEO.
-                Ces surcoûts — amendes, abonnements surdimensionnés, erreurs de facturation —
-                passent sous le radar de la plupart des équipes financières.
+                Les factures d'électricité Moyenne Tension intègrent des postes de charges
+                complexes — pénalités contractuelles, primes de puissance, corrections tarifaires —
+                dont l'anomalie échappe aux équipes financières faute d'expertise sectorielle.
+                Ces surcoûts, pourtant récupérables, grèvent chaque mois votre compte de résultat.
               </p>
               <blockquote className="border-l-4 border-blue-600 pl-6 py-3 bg-blue-50 rounded-r-xl">
                 <p className="text-slate-800 font-semibold text-[15px] leading-relaxed">
-                  Pour de nombreuses entreprises à Douala et Yaoundé, ces anomalies représentent
-                  un surcoût mensuel de{' '}
-                  <span className="text-blue-600 font-bold">200 000 à 1 500 000 FCFA.</span>
+                  Pour les établissements industriels, hôteliers et institutionnels de Douala
+                  et Yaoundé, ces anomalies représentent un surcoût mensuel compris entre{' '}
+                  <span className="text-blue-600 font-bold">200 000 et 1 500 000 FCFA.</span>
                 </p>
               </blockquote>
             </div>
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-                <img src="/images/meter.jpg" alt="Compteur ENEO"
+                <img src="/images/meter.jpg" alt="Compteur électrique Moyenne Tension"
                   className="w-full h-[380px] object-cover"/>
               </div>
               <div className="absolute -top-4 -right-4 bg-blue-600 text-white p-4 rounded-2xl shadow-lg font-bold text-sm text-center leading-tight">
-                Jusqu'à<br/><span className="text-2xl">-12%</span><br/>sur vos factures
+                Jusqu'à<br/><span className="text-2xl">-12%</span><br/>sur vos charges
               </div>
             </div>
           </div>
