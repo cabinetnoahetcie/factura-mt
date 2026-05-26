@@ -1,9 +1,8 @@
 'use client';
-// app/contact/page.jsx
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
-const WA_URL = `https://wa.me/237697252071?text=${encodeURIComponent("Bonjour Cabinet Global Enerdy, je souhaite en savoir plus sur vos services d'optimisation énergétique.")}`;
+const WA_URL = `https://wa.me/237697252071?text=${encodeURIComponent("Bonjour Cabinet Global Energy, je souhaite obtenir des informations sur vos missions d'audit de facturation Moyenne Tension.")}`;
 
 export default function Contact() {
   return (
@@ -12,14 +11,13 @@ export default function Contact() {
 
       <section className="bg-slate-900 pt-36 pb-24 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4">Nous joindre</p>
+          <p className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em] mb-4">Contact</p>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6">
-            Contactez Global Enerdy
+            Contacter le Cabinet
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-            Vous avez des questions ou souhaitez démarrer votre audit ? Notre équipe d'experts
-            est à votre disposition pour vous accompagner vers des économies significatives.
-            Nous sommes joignables du lundi au vendredi, de 8h à 16h.
+            Le Cabinet Global Energy est joignable du lundi au vendredi, de 8h à 16h,
+            pour répondre à toute demande d'information ou de prise en charge d'une mission d'audit.
           </p>
         </div>
       </section>
@@ -27,7 +25,6 @@ export default function Contact() {
       <section className="py-20 px-6 bg-slate-50">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          {/* WhatsApp */}
           <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-7 flex items-start gap-5">
             <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
@@ -35,19 +32,18 @@ export default function Contact() {
               </svg>
             </div>
             <div>
-              <p className="text-xs font-bold text-green-700 uppercase tracking-wider mb-1">Communication directe</p>
+              <p className="text-xs font-bold text-green-700 uppercase tracking-wider mb-1">Ligne directe &amp; WhatsApp</p>
               <a href={WA_URL} target="_blank" rel="noopener noreferrer"
-                className="text-2xl font-extrabold text-green-700 block mb-1 hover:underline">
+                className="text-2xl font-extrabold text-green-700 block mb-2 hover:underline">
                 +237 697 252 071
               </a>
               <p className="text-xs text-green-600 leading-relaxed">
-                Pour une prise de contact immédiate, privilégiez notre ligne directe ou WhatsApp.
-                Réponse sous 2h en jours ouvrables.
+                Canal privilégié pour toute prise de contact rapide.
+                Réponse assurée sous 2 heures en jours ouvrables.
               </p>
             </div>
           </div>
 
-          {/* Email */}
           <div className="bg-white border border-slate-200 rounded-2xl p-7 flex items-start gap-5">
             <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -56,19 +52,18 @@ export default function Contact() {
               </svg>
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Contact par email</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Adresse électronique</p>
               <a href="mailto:globalenergysarl@gmail.com"
-                className="text-base font-bold text-slate-900 block mb-1 hover:text-blue-600">
+                className="text-base font-bold text-slate-900 block mb-2 hover:text-blue-600">
                 globalenergysarl@gmail.com
               </a>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Pour toute question nécessitant une réponse approfondie ou pour nous transmettre
-                des documents. Réponse sous 24h ouvrables.
+                Pour toute demande nécessitant une réponse circonstanciée
+                ou la transmission de documents. Délai de réponse : 24 heures ouvrables.
               </p>
             </div>
           </div>
 
-          {/* Adresse */}
           <div className="bg-white border border-slate-200 rounded-2xl p-7 flex items-start gap-5">
             <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -77,16 +72,17 @@ export default function Contact() {
               </svg>
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Notre siège social</p>
-              <p className="text-base font-bold text-slate-900 mb-1">Douala, Akwa — Immeuble PMUC</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Siège social</p>
+              <p className="text-base font-bold text-slate-900 mb-2">
+                Douala, Akwa — Immeuble PMUC
+              </p>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Notre présence physique à Douala témoigne de notre engagement auprès des
-                entreprises camerounaises.
+                Cameroun. Le Cabinet reçoit sur rendez-vous pour tout entretien
+                préalable à une mission d'audit.
               </p>
             </div>
           </div>
 
-          {/* Horaires */}
           <div className="bg-white border border-slate-200 rounded-2xl p-7 flex items-start gap-5">
             <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -95,10 +91,13 @@ export default function Contact() {
               </svg>
             </div>
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Nos horaires</p>
-              <p className="text-base font-bold text-slate-900 mb-1">Lundi – Vendredi · 08h00 – 16h00</p>
+              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Horaires d'accueil</p>
+              <p className="text-base font-bold text-slate-900 mb-2">
+                Lundi – Vendredi · 08h00 – 16h00
+              </p>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Une disponibilité adaptée à vos exigences professionnelles, 5 jours sur 7.
+                5 jours sur 7. En dehors de ces horaires, vos messages
+                WhatsApp sont traités en priorité dès la reprise.
               </p>
             </div>
           </div>
