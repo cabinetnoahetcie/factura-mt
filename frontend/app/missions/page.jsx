@@ -1,5 +1,4 @@
 'use client';
-// app/missions/page.jsx
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Link   from 'next/link';
@@ -16,77 +15,106 @@ export default function Missions() {
             Déroulement d'une mission
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl leading-relaxed">
-            Notre processus est conçu pour vous offrir une optimisation énergétique sans contrainte —
-            simple, précis, et axé sur vos résultats financiers.
+            Un processus transparent en 6 étapes — de la réception de votre facture
+            à la concrétisation de vos économies.
           </p>
         </div>
       </section>
 
+      {/* 6 étapes */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-0">
+          {[
+            {
+              num:   '01',
+              titre: 'Vous déposez votre facture ENEO',
+              desc:  "Téléchargez votre dernière facture ENEO sur notre plateforme FacturaMT, ou envoyez-la directement via WhatsApp. Pas d'application à installer. La démarche prend moins de deux minutes.",
+              note:  "L'étude est gratuite et sans engagement.",
+              highlight: false,
+            },
+            {
+              num:   '02',
+              titre: 'Un expert analyse votre dossier',
+              desc:  "Sous 48 heures ouvrables, un expert du cabinet examine votre facture. Il identifie chaque source de surcoût et évalue les économies potentielles. Chaque dossier est traité par un expert humain, pas un algorithme.",
+              note:  "Une analyse rigoureuse, personnalisée pour votre situation.",
+              highlight: false,
+            },
+            {
+              num:   '03',
+              titre: 'Nous vous appelons avec nos conclusions',
+              desc:  "Nous vous contactons par téléphone pour vous présenter ce que nous avons trouvé. Vous savez qu'il y a des anomalies et l'ordre de grandeur des économies possibles — sans le rapport détaillé à ce stade.",
+              note:  "C'est à cette étape que vous décidez si vous souhaitez aller plus loin.",
+              highlight: true,
+            },
+            {
+              num:   '04',
+              titre: "Signature d'un accord de partenariat",
+              desc:  "Si vous souhaitez le rapport complet et notre accompagnement, nous formalisons un accord simple. Il précise notre rémunération — un pourcentage des économies effectivement réalisées sur une période définie.",
+              note:  "Si vous n'économisez pas, vous ne payez rien.",
+              highlight: true,
+            },
+            {
+              num:   '05',
+              titre: 'Remise du rapport complet chiffré en FCFA',
+              desc:  "Vous recevez le rapport détaillé indiquant ligne par ligne les anomalies identifiées, les montants récupérables en FCFA, et les démarches précises à engager auprès d'ENEO.",
+              note:  "Des chiffres concrets et vérifiables, pas des estimations.",
+              highlight: false,
+            },
+            {
+              num:   '06',
+              titre: "Accompagnement auprès d'ENEO",
+              desc:  "Nous vous assistons dans les démarches de correction — modification de contrat, contestation de facture, demande de remboursement. Nous suivons que les corrections sont bien appliquées sur vos prochaines factures.",
+              note:  "Nous restons à vos côtés jusqu'à ce que vos économies soient concrétisées.",
+              highlight: false,
+            },
+          ].map((step, i) => (
+            <div key={i} className="flex gap-8 pb-12 relative">
+              {i < 5 && <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-blue-100"/>}
+              <div className="flex-shrink-0">
+                <div className={`w-10 h-10 rounded-full text-white flex items-center justify-center font-black text-sm z-10 relative ${step.highlight ? 'bg-blue-600 ring-4 ring-blue-100' : 'bg-slate-900'}`}>
+                  {i + 1}
+                </div>
+              </div>
+              <div className="flex-1 pb-4">
+                <p className="text-blue-600 font-black text-xs tracking-widest mb-2">{step.num}</p>
+                <h3 className="text-xl font-extrabold text-slate-900 mb-3">{step.titre}</h3>
+                <p className="text-slate-600 text-[15px] leading-relaxed mb-3">{step.desc}</p>
+                <div className={`border rounded-xl px-5 py-3 text-sm italic ${step.highlight ? 'bg-blue-600 border-blue-600 text-white font-semibold' : 'bg-blue-50 border-blue-100 text-blue-800'}`}>
+                  {step.note}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Modèle économique */}
+      <section className="bg-slate-50 py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4">Notre modèle économique</p>
+          <h2 className="text-3xl font-extrabold text-slate-900 mb-6 leading-tight">
+            Vous ne payez que si vous économisez
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              {
-                num: '01',
-                titre: 'Vous déposez votre facture ENEO',
-                desc: 'Téléchargez simplement votre dernière facture ENEO sur notre plateforme FacturaMT, ou envoyez-la directement via WhatsApp. Pas d\'application à installer, pas de compte à créer. La démarche prend moins de deux minutes.',
-                note: 'C\'est simple, rapide et sans engagement.',
-              },
-              {
-                num: '02',
-                titre: 'Audit personnalisé par nos ingénieurs',
-                desc: 'Sous 48 heures ouvrables, un ingénieur du cabinet réalise une analyse approfondie de votre facture. Il identifie chaque source de surcoût — abonnement inadapté, pénalités évitables, erreurs de facturation — et quantifie précisément les économies réalisables.',
-                note: 'Loin des solutions automatisées, chaque audit est réalisé par nos ingénieurs qualifiés.',
-              },
-              {
-                num: '03',
-                titre: 'Validation expert et chiffrage en FCFA',
-                desc: 'Chaque anomalie détectée est vérifiée manuellement et les économies potentielles sont chiffrées avec exactitude en FCFA, ligne par ligne. Vous recevez un rapport clair et détaillé, sans jargon technique.',
-                note: 'Une visibilité totale sur les sommes que vous pourriez récupérer.',
-              },
-              {
-                num: '04',
-                titre: 'Présentation des résultats',
-                desc: 'Nous vous contactons pour vous présenter les résultats de l\'audit. Vous pouvez poser toutes vos questions. Vous décidez librement de la suite — aucun engagement n\'est requis à cette étape.',
-                note: 'Vous restez maître de votre décision.',
-              },
-              {
-                num: '05',
-                titre: 'Soutien complet auprès d\'ENEO (si souhaité)',
-                desc: 'Si vous décidez de mettre en œuvre nos recommandations, nous vous accompagnons dans toutes les démarches auprès d\'ENEO — modification de contrat, contestation de factures, demandes de correction — jusqu\'à la concrétisation de vos économies.',
-                note: 'Nous gérons les démarches pour que vous vous concentriez sur votre cœur de métier.',
-              },
-            ].map((step, i) => (
-              <div key={i} className="flex gap-8 pb-12 relative">
-                {i < 4 && <div className="absolute left-5 top-12 bottom-0 w-0.5 bg-blue-100"/>}
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-black text-sm z-10 relative">
-                    {i + 1}
-                  </div>
-                </div>
-                <div className="flex-1 pb-4">
-                  <p className="text-blue-600 font-black text-xs tracking-widest mb-2">{step.num}</p>
-                  <h3 className="text-xl font-extrabold text-slate-900 mb-3">{step.titre}</h3>
-                  <p className="text-slate-600 text-[15px] leading-relaxed mb-3">{step.desc}</p>
-                  <div className="bg-blue-50 border border-blue-100 rounded-xl px-5 py-3 text-sm text-blue-800 italic">
-                    {step.note}
-                  </div>
-                </div>
+              { etape:'Étude',      label:'Gratuite',            desc:"L'analyse de votre facture et l'identification des anomalies ne vous coûtent rien.", color:'border-green-500 bg-green-50' },
+              { etape:'Accord',     label:'Avant le rapport',    desc:"Vous signez un accord avant de recevoir les chiffres détaillés. Vous savez exactement à quoi vous vous engagez.", color:'border-blue-600 bg-blue-50' },
+              { etape:'Honoraires', label:'% des économies réelles', desc:"Notre rémunération est un pourcentage des économies effectivement constatées sur vos factures ENEO.", color:'border-slate-900 bg-slate-100' },
+            ].map((item, i) => (
+              <div key={i} className={`rounded-2xl p-6 border-t-4 ${item.color}`}>
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">{item.etape}</p>
+                <p className="text-lg font-extrabold text-slate-900 mb-3">{item.label}</p>
+                <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="bg-slate-900 py-20 px-6 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-          Passez à l'action : votre audit gratuit vous attend
-        </h2>
-        <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-          N'attendez plus pour optimiser vos coûts énergétiques. Déposez votre facture ENEO
-          dès aujourd'hui. Notre audit est gratuit, confidentiel et vous recevrez une réponse
-          détaillée sous 48 heures.
-        </p>
+        <h2 className="text-2xl font-bold text-white mb-4">Prêt à démarrer ?</h2>
+        <p className="text-slate-400 mb-8">L'étude est gratuite et sans engagement.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/" className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all text-sm">
             Déposer ma facture →
