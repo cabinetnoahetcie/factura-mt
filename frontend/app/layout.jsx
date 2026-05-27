@@ -1,38 +1,31 @@
-// app/layout.jsx
-import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 import './globals.css';
 
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['300','400','500','600'],
-  variable: '--font-sans',
-});
-
-const dmSerif = DM_Serif_Display({
-  subsets: ['latin'],
-  weight: ['400'],
-  style:  ['normal','italic'],
-  variable: '--font-serif',
-});
-
 export const metadata = {
-  title:       'FacturaMT — Audit gratuit de votre facture ENEO',
-  description: 'Analysez votre facture Moyenne Tension ENEO Cameroun. Identifiez vos économies potentielles gratuitement en 2 minutes.',
+  title: 'Cabinet Global Energy — Audit de facturation Moyenne Tension · Douala',
+  description: 'Le Cabinet Global Energy conduit des audits experts de vos factures d\'électricité Moyenne Tension. Anomalies tarifaires identifiées et économies chiffrées en FCFA sous 48 heures. Douala, Cameroun.',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="fr" className={`${dmSans.variable} ${dmSerif.variable}`}>
-      <body className="bg-cream font-sans text-gray-800 antialiased">
-        {children}
+    <html lang="fr">
+      <body>
         <Toaster
-          position="top-right"
+          position="top-center"
           toastOptions={{
             duration: 4000,
-            style: { fontFamily: 'var(--font-sans)', fontSize: '14px' },
+            style: {
+              background: '#1e293b',
+              color: '#f8fafc',
+              borderRadius: '12px',
+              fontSize: '14px',
+              fontWeight: '500',
+            },
+            success: { iconTheme: { primary: '#10b981', secondary: '#fff' } },
+            error:   { iconTheme: { primary: '#ef4444', secondary: '#fff' } },
           }}
         />
+        {children}
       </body>
     </html>
   );
