@@ -38,7 +38,7 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
 
-          {/* Hero text */}
+          {/* Hero text — centré */}
           <div className="max-w-3xl mx-auto text-center mb-14">
             <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-8">
               <span className="relative flex h-2 w-2">
@@ -49,12 +49,10 @@ export default function HomePage() {
                 Cabinet Global Energy · Douala &amp; Yaoundé
               </span>
             </div>
-
             <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
               Vos factures d'électricité Moyenne Tension recèlent des{' '}
               <span className="text-blue-600">surcoûts que votre entreprise supporte chaque mois.</span>
             </h1>
-
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Le Cabinet Global Energy conduit des audits experts de vos factures d'électricité
               Moyenne Tension afin d'identifier les anomalies tarifaires et de vous restituer,
@@ -63,36 +61,66 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Chiffres clés */}
-          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mb-14">
-            {[
-              { val:'8 / 10', lbl:'des structures analysées présentent au moins une anomalie tarifaire' },
-              { val:'48h',    lbl:'délai de restitution de nos premières conclusions'                    },
-              { val:'0 FCFA', lbl:'aucun frais pour l\'étude initiale'                                  },
-            ].map(({ val, lbl }) => (
-              <div key={val} className="text-center">
-                <div className="text-2xl md:text-3xl font-extrabold text-slate-900">{val}</div>
-                <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-tight mt-1">{lbl}</div>
-              </div>
-            ))}
-          </div>
+          {/* Deux colonnes : formulaire + image */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start pb-20">
 
-          {/* Formulaire */}
-          <div ref={tunnelRef} className="max-w-2xl mx-auto pb-20">
-            <div className="bg-white border border-slate-100 rounded-3xl shadow-xl shadow-slate-200/50 p-8 md:p-12">
-              <Stepper current={step} />
-              <div className="mt-10">
-                {step === 0 && (
-                  <StepUpload onSuccess={data => { setUploadData(data); next(); scrollToTunnel(); }}/>
-                )}
-                {step === 1 && (
-                  <StepInfos uploadData={uploadData}
-                    onSuccess={data => { setResult(data); next(); scrollToTunnel(); }}
-                    onBack={prev}/>
-                )}
-                {step === 2 && result && (
-                  <StepConfirm dossier={result.dossier} client={result.client} onNewSubmission={reset}/>
-                )}
+            {/* Colonne gauche — formulaire */}
+            <div ref={tunnelRef}>
+              {/* Chiffres clés */}
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                {[
+                  { val:'8 / 10', lbl:'structures présentent une anomalie tarifaire' },
+                  { val:'48h',    lbl:'délai de restitution des conclusions'          },
+                  { val:'0 FCFA', lbl:'aucun frais pour l\'étude initiale'           },
+                ].map(({ val, lbl }) => (
+                  <div key={val} className="text-center bg-slate-50 rounded-2xl p-4 border border-slate-100">
+                    <div className="text-xl font-extrabold text-slate-900">{val}</div>
+                    <div className="text-[9px] text-slate-400 font-bold uppercase tracking-widest leading-tight mt-1">{lbl}</div>
+                  </div>
+                ))}
+              </div>
+              {/* Tunnel */}
+              <div className="bg-white border border-slate-100 rounded-3xl shadow-xl shadow-slate-200/50 p-8">
+                <Stepper current={step} />
+                <div className="mt-10">
+                  {step === 0 && (
+                    <StepUpload onSuccess={data => { setUploadData(data); next(); scrollToTunnel(); }}/>
+                  )}
+                  {step === 1 && (
+                    <StepInfos uploadData={uploadData}
+                      onSuccess={data => { setResult(data); next(); scrollToTunnel(); }}
+                      onBack={prev}/>
+                  )}
+                  {step === 2 && result && (
+                    <StepConfirm dossier={result.dossier} client={result.client} onNewSubmission={reset}/>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Colonne droite — image hero */}
+            <div className="relative hidden lg:block sticky top-24">
+              <div className="rounded-3xl overflow-hidden shadow-2xl shadow-blue-200/40 border-8 border-white">
+                <img
+                  src="/images/engineer-blue.jpg"
+                  alt="Expert Cabinet Global Energy sur site industriel"
+                  className="w-full h-[580px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent rounded-3xl"/>
+              </div>
+              {/* Badge flottant */}
+              <div className="absolute -bottom-5 -left-5 bg-white p-5 rounded-2xl shadow-xl border border-slate-100 max-w-[220px]">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                  </div>
+                  <span className="text-xs font-bold text-slate-900">Expertise de terrain</span>
+                </div>
+                <p className="text-[11px] text-slate-500 leading-relaxed">
+                  Nos experts interviennent auprès des industries et grands comptes de Douala et Yaoundé.
+                </p>
               </div>
             </div>
           </div>
@@ -150,7 +178,7 @@ export default function HomePage() {
 
           <div className="relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-              <img src="/images/meter.jpg" alt="Compteur électrique Moyenne Tension"
+              <img src="/images/office-screens.jpg" alt="Bureau d'ingénierie Cabinet Global Energy"
                 className="w-full h-[420px] object-cover"/>
             </div>
             <div className="absolute -top-4 -right-4 bg-blue-600 text-white p-4 rounded-2xl shadow-lg font-bold text-sm text-center leading-tight">
@@ -165,13 +193,29 @@ export default function HomePage() {
       ═══════════════════════════════════════════ */}
       <section id="processus" className="bg-white py-28 px-6 scroll-mt-20">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">
-              Comment ça marche
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
-              Un processus simple et transparent pour des économies garanties.
-            </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            {/* Image */}
+            <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white order-2 lg:order-1">
+              <img
+                src="/images/team-audit.jpg"
+                alt="Experts Cabinet Global Energy en mission d'audit"
+                className="w-full h-[320px] object-cover"
+              />
+            </div>
+            {/* Titre + intro */}
+            <div className="order-1 lg:order-2">
+              <span className="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-4 block">
+                Comment ça marche
+              </span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
+                Un processus simple et transparent pour des économies garanties.
+              </h2>
+              <p className="text-slate-600 text-[15px] leading-relaxed">
+                De la réception de votre facture à la concrétisation des économies,
+                chaque étape est conduite par nos experts avec rigueur et transparence.
+                Aucun automatisme — uniquement une analyse humaine et personnalisée.
+              </p>
+            </div>
           </div>
 
           {/* 4 étapes */}
@@ -266,6 +310,14 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
             <div>
+              {/* Image technicien */}
+              <div className="rounded-3xl overflow-hidden shadow-xl border-4 border-white mb-8">
+                <img
+                  src="/images/engineer-yellow.jpg"
+                  alt="Expert Cabinet Global Energy sur tableau électrique"
+                  className="w-full h-[260px] object-cover"
+                />
+              </div>
               <p className="text-slate-600 text-[15px] leading-relaxed mb-6">
                 Établi à Douala depuis 2022, le Cabinet Global Energy est spécialisé dans l'audit
                 et l'optimisation des factures d'électricité Moyenne Tension pour les entreprises,
